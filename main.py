@@ -28,14 +28,7 @@ def get_most_liked(user, time, n):
                     #print("No Quotes")
                     pass
                 #get url for dict
-                try:
-                    url = tweet.entities['media'][0]['expanded_url']
-                except:
-                    try:
-                        url = tweet.entities['urls'][0]['expanded_url']
-                    except:
-                        print("Couldn't get url")
-                        url = f"https://twitter.com/{user}/status/{tweet.id}"
+                url = f"https://twitter.com/{user}/status/{tweet.id}"
                 best_tweets[url] = sum
                 #remove min if dict is too big
                 if len(best_tweets) > n:
@@ -48,7 +41,29 @@ def get_most_liked(user, time, n):
                     del best_tweets[min_url]
             else: 
                 break
-    print(best_tweets)
+    return best_tweets
 
-time = datetime.now() - timedelta(days=2)
-get_most_liked('MayADevBe', time, 10)
+def print_desc_list(best_tweets):
+    for key, value in sorted(best_tweets.items(), key=lambda item: item[1], reverse=True):
+        print("%s: %s" % (value, key))
+    print()
+
+def main():
+    print()
+    print("Get the most interacted tweets fro a user!")
+    print()
+    user = input("Enter the screen name of the user: ")
+    days = input("Enter the days, how far back you want to look: ")
+    n = input("Enter how amount tweets you want returned: ")
+    print()
+    try:
+        days = int(days)
+        n = int(n)
+        time = datetime.now() - timedelta(days=days)
+        best_tweets = get_most_liked(user, time, n)
+        print_desc_list(best_tweets)
+    except ValueError:
+        print("Days and amount have to be an int value!")
+    
+
+main()
