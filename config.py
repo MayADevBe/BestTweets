@@ -2,8 +2,6 @@ import tweepy
 
 CONSUMER_KEY = ''
 CONSUMER_SECRET = ''
-ACCESS_TOKEN = ''
-ACCESS_TOKEN_SECRET = ''
 
 def get_Api():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)

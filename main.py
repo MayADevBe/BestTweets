@@ -63,7 +63,6 @@ def main():
         best_tweets = get_most_liked(user, time, n)
         print_desc_list(best_tweets)
     except ValueError:
-        print("Days and amount have to be an int value!")
-    
+        print("Days and amount have to be an int value!")   
 
 main()
