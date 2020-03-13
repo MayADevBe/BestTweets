@@ -50,7 +50,7 @@ def print_desc_list(best_tweets):
 
 def main():
     print()
-    print("Get the most interacted tweets fro a user!")
+    print("Get the most interacted tweets for a user!")
     print()
     user = input("Enter the screen name of the user: ")
     days = input("Enter the days, how far back you want to look: ")
